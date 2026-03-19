@@ -111,7 +111,8 @@
         <div class="grid">
           <div class="panel">
             <h3 data-en="Statement" data-zh="艺术家陈述">Statement</h3>
-            <p>Sitong (FATA) Liao is a fashion and fiber designer working between China and Chicago. She is currently completing a Bachelor of Fine Arts in Fashion Design and Fiber Materials at the School of the Art Institute of Chicago.
+            <div class="statement-wrap">
+              <p id="statementText" class="statement-collapsed">Sitong (FATA) Liao is a fashion and fiber designer working between China and Chicago. She is currently completing a Bachelor of Fine Arts in Fashion Design and Fiber Materials at the School of the Art Institute of Chicago.
 <br><br>
 Her practice explores memory, culture, and emotional connection through garments and crafted surfaces, shaped by the experience of living across different cultural contexts. Rather than positioning herself primarily as an independent artist, Liao approaches design as a form of narrative service to industry, helping brands articulate identity through material, form, and storytelling.
 <br><br>
@@ -122,7 +123,9 @@ Her collection <em>A Tranquil Night</em> (静夜思) draws from lunar imagery an
 Color plays a central role in her practice. Influenced by the vitality of her hometown, Liao often works with vivid, playful palettes that soften cultural distance and invite resonance across audiences. Through color, texture, and pattern, elements of Chinese cultural memory travel within the garment, reaching viewers who may not share the same background but can still feel its emotional warmth.
 <br><br>
 Through her work, Liao seeks to create garments that communicate quietly yet deeply—designs that carry stories, invite empathy, and allow cultures to meet through feeling rather than explanation.
-            </p>
+              </p>
+              <button class="read-more-btn" id="readMoreBtn" onclick="toggleStatement()">Read more ↓</button>
+            </div>
           </div>
           <div class="panel" id="contact">
             <h3 data-en="Contact" data-zh="联系方式">Contact</h3>
@@ -141,6 +144,40 @@ Through her work, Liao seeks to create garments that communicate quietly yet dee
     </footer>
   </main>
 
+  <style>
+    .statement-collapsed {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .statement-expanded {
+      display: block;
+    }
+    .read-more-btn {
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 8px 0 0;
+      opacity: .6;
+      transition: opacity .2s;
+    }
+    .read-more-btn:hover { opacity: 1; }
+  </style>
+  <script>
+    function toggleStatement() {
+      const text = document.getElementById('statementText');
+      const btn = document.getElementById('readMoreBtn');
+      const collapsed = text.classList.contains('statement-collapsed');
+      text.classList.toggle('statement-collapsed', !collapsed);
+      text.classList.toggle('statement-expanded', collapsed);
+      btn.textContent = collapsed ? 'Read less ↑' : 'Read more ↓';
+    }
+  </script>
   <script src="main.js"></script>
   <script>
     const btn = document.getElementById('langBtn');
