@@ -23,7 +23,7 @@
     <div class="pill" style="display:inline-flex;margin:10px 0 14px">一封来自索科拉岛的晚宴邀请</div>
     <p class="p-sub"><strong style="font-weight:500;letter-spacing:.08em">2024</strong> · Mini Project · Moodboard · Fabric Manipulation · Concept Worldbuilding</p>
     <div class="hero-shot">
-      <img src="page_07.jpg" alt="An Invitation From Socotra Island hero" />
+      <img id="heroImg" src="page_07.jpg" alt="An Invitation From Socotra Island hero" />
     </div>
     <section class="section" style="padding-top:40px">
       <h2 class="h2">Editorial Pages</h2>
@@ -48,6 +48,7 @@
   </div>
   <script>
     const isEn = new URLSearchParams(location.search).get('lang') === 'en';
+    if (isEn) document.getElementById('heroImg').src = 'en_06.jpg';
     const images = isEn
       ? [
           { src: 'en_06.jpg', alt: 'Socotra Island — moodboard' },
