@@ -28,12 +28,8 @@
     <section class="section" style="padding-top:40px">
       <h2 class="h2">Editorial Pages</h2>
       <p class="note">Click any image to view full screen. Use ← → to navigate.</p>
-      <div class="gallery">
-        
-        <div class="gi" data-full="page_09.jpg">
-          <img src="page_09.jpg" alt="Illustration Work page 9">
-        </div>
-        
+      <div class="gallery" id="gallery">
+        <!-- images injected by script -->
       </div>
     </section>
   </main>
@@ -50,6 +46,16 @@
       <div class="lb-img"><img alt="Full image"></div>
     </div>
   </div>
+  <script>
+    const isEn = new URLSearchParams(location.search).get('lang') === 'en';
+    const images = isEn
+      ? [{ src: 'en_08.jpg', alt: 'Illustration Work' }]
+      : [{ src: 'page_09.jpg', alt: 'Illustration Work page 9' }];
+    const gallery = document.getElementById('gallery');
+    images.forEach(({ src, alt }) => {
+      gallery.innerHTML += `<div class="gi" data-full="${src}"><img src="${src}" alt="${alt}"></div>`;
+    });
+  </script>
   <script src="main.js"></script>
 </body>
 </html>
