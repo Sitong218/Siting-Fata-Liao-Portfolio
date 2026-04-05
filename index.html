@@ -183,12 +183,11 @@ Through her work, Liao seeks to create garments that communicate quietly yet dee
     const btn = document.getElementById('langBtn');
     let isZh = false;
 
-    const projectLinks = {
-      'tranquil-night.html': document.querySelector('a[href="tranquil-night.html"]'),
-      'socotra.html': document.querySelector('a[href="socotra.html"]'),
-      'illustration.html': document.querySelector('a[href="illustration.html"]'),
-      'fabric.html': document.querySelector('a[href="fabric.html"]'),
-    };
+    const cardBases = ['tranquil-night.html', 'socotra.html', 'illustration.html', 'fabric.html'];
+    const cardEls = cardBases.map(b => document.querySelector(`a[href="${b}"]`));
+
+    // default: EN mode, so links start with ?lang=en
+    cardEls.forEach((el, i) => { if (el) el.href = cardBases[i] + '?lang=en'; });
 
     btn.addEventListener('click', () => {
       isZh = !isZh;
@@ -196,10 +195,9 @@ Through her work, Liao seeks to create garments that communicate quietly yet dee
       document.querySelectorAll('[data-en]').forEach(el => {
         el.textContent = isZh ? el.dataset.zh : el.dataset.en;
       });
-      // update project card links
-      Object.entries(projectLinks).forEach(([base, el]) => {
+      cardEls.forEach((el, i) => {
         if (!el) return;
-        el.href = isZh ? base : base + '?lang=en';
+        el.href = isZh ? cardBases[i] : cardBases[i] + '?lang=en';
       });
     });
   </script>
