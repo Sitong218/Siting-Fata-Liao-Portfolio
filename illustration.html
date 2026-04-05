@@ -23,7 +23,7 @@
     <div class="pill" style="display:inline-flex;margin:10px 0 14px">插画作品</div>
     <p class="p-sub"><strong style="font-weight:500;letter-spacing:.08em">2023–2025</strong> · Fashion Illustration · Character · Color Studies</p>
     <div class="hero-shot">
-      <img src="page_09.jpg" alt="Illustration Work hero" />
+      <img id="heroImg" src="page_09.jpg" alt="Illustration Work hero" />
     </div>
     <section class="section" style="padding-top:40px">
       <h2 class="h2">Editorial Pages</h2>
@@ -48,6 +48,7 @@
   </div>
   <script>
     const isEn = new URLSearchParams(location.search).get('lang') === 'en';
+    if (isEn) document.getElementById('heroImg').src = 'en_08.jpg';
     const images = isEn
       ? [{ src: 'en_08.jpg', alt: 'Illustration Work' }]
       : [{ src: 'page_09.jpg', alt: 'Illustration Work page 9' }];
